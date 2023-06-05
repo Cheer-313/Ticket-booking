@@ -15,6 +15,7 @@
         <Carousel />
         <Carousel />
         <TheFooter />
+
     </div>
 </template>
 

@@ -5,7 +5,7 @@
                 src="https://media.stubhubstatic.com/stubhub-catalog/d_defaultLogo.jpg/t_f-fs-0fv,q_auto:low,f_auto,c_fill,$w_280_mul_3,$h_180_mul_3/performer/700045/uk7fpo2utu7y4d8nfj7f"
                 alt="Jese Avatar">
         </a>
-        <div class="p-1">
+        <div class="p-4">
             <h3 class="text-xl font-bold tracking-tight text-white">
                 <a href="#">Jese Leos</a>
             </h3>
