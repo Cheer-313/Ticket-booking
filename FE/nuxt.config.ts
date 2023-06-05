@@ -7,5 +7,6 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss'
     ],
     plugins: [
+        { src: '~/plugins/vue-datepicker', ssr: false }
     ],
 })
