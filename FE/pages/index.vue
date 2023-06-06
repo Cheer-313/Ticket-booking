@@ -14,18 +14,11 @@
         <Carousel />
         <Carousel />
         <Carousel />
+        <NewsLetter />
         <TheFooter />
-        <client-only><date-picker placeholder="MM/DD/YYYY" format="MM/dd/yyyy" v-model="date_today" /></client-only>
     </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            date_today: new Date()
-        }
-    }
-}
 
 </script>
