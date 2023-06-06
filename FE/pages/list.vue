@@ -1,6 +1,5 @@
 <template>
     <div>
-        <TheHeader />
         <section class="bg-gray-800">
             <div class="mx-auto max-w-screen-xl pt-10">
                 <div class="mx-auto max-w-screen-sm text-center">
@@ -15,7 +14,6 @@
         <EventListInfo />
 
         <NewsLetter />
-        <TheFooter />
     </div>
 </template>
 
