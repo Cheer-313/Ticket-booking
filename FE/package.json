@@ -19,6 +19,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@vuepic/vue-datepicker": "^5.2.0",
     "flowbite": "^1.6.5",
-    "flowbite-datepicker": "^1.2.2"
+    "flowbite-datepicker": "^1.2.2",
+    "primevue": "^3.29.2"
   }
 }
