@@ -15,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Repositories\BaseRepositoryInterface::class,
-            \App\Repositories\BaseRepository::class
+            \App\Repositories\BaseRepository::class,
+            \App\Services\BaseService::class,
         );
     }
 
