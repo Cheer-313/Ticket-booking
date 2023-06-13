@@ -1,70 +1,26 @@
 
 <script setup>
-import { onMounted } from 'vue'
-import { initFlowbite, initDropdowns } from 'flowbite'
-
-import { ref } from "vue";
 import { FilterMatchMode, FilterService } from 'primevue/api';
 import AutoComplete from 'primevue/autocomplete';
 
-const cities = ref();
-const selectedCity = ref();
-const filteredCities = ref();
-const groupedCities = ref([
-    {
-        label: 'Germany',
-        code: 'DE',
-        items: [
-            { label: 'Berlin', value: 'Berlin' },
-            { label: 'Frankfurt', value: 'Frankfurt' },
-            { label: 'Hamburg', value: 'Hamburg' },
-            { label: 'Munich', value: 'Munich' }
-        ]
-    },
-    {
-        label: 'USA',
-        code: 'US',
-        items: [
-            { label: 'Chicago', value: 'Chicago' },
-            { label: 'Los Angeles', value: 'Los Angeles' },
-            { label: 'New York', value: 'New York' },
-            { label: 'San Francisco', value: 'San Francisco' }
-        ]
-    },
-    {
-        label: 'Japan',
-        code: 'JP',
-        items: [
-            { label: 'Kyoto', value: 'Kyoto' },
-            { label: 'Osaka', value: 'Osaka' },
-            { label: 'Tokyo', value: 'Tokyo' },
-            { label: 'Yokohama', value: 'Yokohama' }
-        ]
-    }
-]);
+const selectedItem = ref();
+const searchResult = ref();
 
-const search = (event) => {
-    let query = event.query;
-    let newFilteredCities = [];
-
-    for (let country of groupedCities.value) {
-        let filteredItems = FilterService.filter(country.items, ['label'], query, FilterMatchMode.CONTAINS);
-        if (filteredItems && filteredItems.length) {
-            newFilteredCities.push({...country, ...{items: filteredItems}});
+const search = async (event) => {
+    let paramSearch = event.query;
+    let dataSearch = [];
+    let { data: response, error } = await useFetch("http://127.0.0.1:8000/api/search-box", {
+        method: 'GET',
+        query: {search_param: paramSearch}
+    });
+    for (let value of response._rawValue) {
+        if (value.items.length > 0) {
+            dataSearch.push(value);
         }
     }
-
-    filteredCities.value = newFilteredCities;
-
-}
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-    initFlowbite();
-    initDropdowns();
-})
+    searchResult.value = dataSearch;
+};
 </script>
-
 <template>
     <section class="bg-gray-900 flex py-5 items-center">
         <div class="max-w-screen-xl mx-auto w-full">
@@ -75,14 +31,21 @@ onMounted(() => {
                         <form>
                             <div class="flex">
                                 <div class="relative w-full">
-                                    <input type="search" id="searchBar"
+                                    <!-- <input type="search" id="searchBar"
                                         class="block p-2.5 w-full z-20 text-sm rounded-r-lg border-l-2 border focus:ring-blue-500 bg-gray-700 border-l-gray-700  border-gray-600 placeholder-gray-400 text-white focus:border-blue-500"
-                                        placeholder="Search Mockups, Logos, Design Templates..." required>
-                                    <AutoComplete v-model="selectedCity" :suggestions="filteredCities" @complete="search" optionLabel="label" optionGroupLabel="label" optionGroupChildren="items" placeholder="Hint: type 'a'">
+                                        placeholder="Search Mockups, Logos, Design Templates..." required> -->
+                                    <AutoComplete :inputClass="'w-full'" 
+                                            v-model="selectedItem" :suggestions="searchResult" @complete="search" optionLabel="item_label" optionGroupLabel="group_label" optionGroupChildren="items" placeholder="Search for artists, venues and events">
+                                        <!-- Layout Group -->
                                         <template #optiongroup="slotProps">
                                             <div class="flex align-items-center country-item">
-                                                <img :alt="slotProps.item.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${slotProps.item.code.toLowerCase()} mr-2`" style="width: 18px" />
-                                                <div>{{ slotProps.item.label }}</div>
+                                                <div>{{ slotProps.option.group_label }}</div>
+                                            </div>
+                                        </template>
+                                        <!-- Layout Option -->
+                                        <template #option="slotProps">
+                                            <div class="flex align-items-center">
+                                                <div>{{ slotProps.option.item_label }}</div>
                                             </div>
                                         </template>
                                     </AutoComplete>
@@ -99,7 +62,7 @@ onMounted(() => {
                             </div>
                         </form>
                     </div>
-                    <div
+                    <!-- <div
                         class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
                         <div class="flex items-center w-full space-x-3 md:w-auto">
                             <select id="dates"
@@ -141,9 +104,15 @@ onMounted(() => {
                                 <option value="DE">Germany</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<style>
+.p-autocomplete.p-component {
+    width: 100% !important;
+}
+</style>

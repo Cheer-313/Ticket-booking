@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseRepository implements BaseRepositoryInterface
@@ -51,5 +52,16 @@ abstract class BaseRepository implements BaseRepositoryInterface
         }
 
         return false;
+    }
+
+    public function findByCondition($condition) {
+        $result = [];
+        try {
+            $query = $this->model->where($condition);
+            $result = !empty($query->get()) ? $query->get()->toArray() : [];
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
     }
 }
