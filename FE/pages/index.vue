@@ -1,5 +1,5 @@
 <script setup>
-const { data, error } = await useFetch(process.env.API_URL + "/api/home", {
+const { data, error } = await useFetch("http://127.0.0.1:8000/api/home", {
     method: 'GET',
 });
 </script>
