@@ -11,7 +11,7 @@ const search = async (event) => {
     let dataSearch = [];
     let { data: response, error } = await useFetch("http://127.0.0.1:8000/api/search-box", {
         method: 'GET',
-        query: {search_param: paramSearch}
+        query: { search_param: paramSearch }
     });
     for (let value of response._rawValue) {
         if (value.items.length > 0) {
@@ -32,10 +32,11 @@ const search = async (event) => {
                             <div class="flex">
                                 <div class="relative w-full">
                                     <!-- <input type="search" id="searchBar"
-                                        class="block p-2.5 w-full z-20 text-sm rounded-r-lg border-l-2 border focus:ring-blue-500 bg-gray-700 border-l-gray-700  border-gray-600 placeholder-gray-400 text-white focus:border-blue-500"
-                                        placeholder="Search Mockups, Logos, Design Templates..." required> -->
-                                    <AutoComplete :inputClass="'w-full'" 
-                                            v-model="selectedItem" :suggestions="searchResult" @complete="search" optionLabel="item_label" optionGroupLabel="group_label" optionGroupChildren="items" placeholder="Search for artists, venues and events">
+                                                                                                                                                                        class="block p-2.5 w-full z-20 text-sm rounded-r-lg border-l-2 border focus:ring-blue-500 bg-gray-700 border-l-gray-700  border-gray-600 placeholder-gray-400 text-white focus:border-blue-500"
+                                                                                                                                                                        placeholder="Search Mockups, Logos, Design Templates..." required> -->
+                                    <AutoComplete :inputClass="'w-full'" v-model="selectedItem" :suggestions="searchResult"
+                                        @complete="search" optionLabel="item_label" optionGroupLabel="group_label"
+                                        optionGroupChildren="items" placeholder="Search for artists, venues and events">
                                         <!-- Layout Group -->
                                         <template #optiongroup="slotProps">
                                             <div class="flex align-items-center country-item">
@@ -50,8 +51,8 @@ const search = async (event) => {
                                         </template>
                                     </AutoComplete>
                                     <button type="submit"
-                                        class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white rounded-r-lg border border-blue-700 focus:ring-4 focus:outline-none bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-                                        <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        class="absolute right-0 w-16 h-full text-sm font-medium text-white rounded-r-md border border-gray-700 focus:ring-4 focus:outline-none bg-gray-700 hover:bg-gray-800">
+                                        <svg aria-hidden="true" class="w-5 h-5 m-auto" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -82,29 +83,29 @@ const search = async (event) => {
                                         <a href="#"
                                             class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
                                             weekend</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
-                                            weekend</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
-                                            Month</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <select id="countries"
-                                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                                <option selected>Choose a country</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
-                            </select>
-                        </div>
-                    </div> -->
+                                                                                                                                                                    </li>
+                                                                                                                                                                    <li>
+                                                                                                                                                                        <a href="#"
+                                                                                                                                                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
+                                                                                                                                                                            weekend</a>
+                                                                                                                                                                    </li>
+                                                                                                                                                                    <li>
+                                                                                                                                                                        <a href="#"
+                                                                                                                                                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
+                                                                                                                                                                            Month</a>
+                                                                                                                                                                    </li>
+                                                                                                                                                                </ul>
+                                                                                                                                                            </div>
+                                                                                                                                                            <select id="countries"
+                                                                                                                                                                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                                                                                                                                <option selected>Choose a country</option>
+                                                                                                                                                                <option value="US">United States</option>
+                                                                                                                                                                <option value="CA">Canada</option>
+                                                                                                                                                                <option value="FR">France</option>
+                                                                                                                                                                <option value="DE">Germany</option>
+                                                                                                                                                            </select>
+                                                                                                                                                        </div>
+                                                                                                                                                    </div> -->
                 </div>
             </div>
         </div>
@@ -114,5 +115,6 @@ const search = async (event) => {
 <style>
 .p-autocomplete.p-component {
     width: 100% !important;
+
 }
 </style>

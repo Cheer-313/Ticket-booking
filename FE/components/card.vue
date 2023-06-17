@@ -7,7 +7,7 @@ const props = defineProps(['artist'])
             <img class=" rounded-lg sm:rounded-l-lg object-contain w-full h-48" :src="artist['galerry_url']" alt="">
         </a>
         <div class="p-4">
-            <h3 class="text-xl font-bold tracking-tight text-white">
+            <h3 class="text-xl text-center font-bold tracking-tight text-white ">
                 <a href="#">{{ artist['artist_name'] }}</a>
             </h3>
         </div>
