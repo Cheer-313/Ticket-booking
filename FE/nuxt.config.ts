@@ -22,19 +22,4 @@ export default defineNuxtConfig({
         ],
 
     },
-    app: {
-        head: {
-            script: [
-                {
-                    src: "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"
-                }
-            ],
-            link: [
-                {
-                    rel: "stylesheet",
-                    href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap",
-                },
-            ],
-        },
-    },
 })
