@@ -18,9 +18,11 @@
                                 </div>   
                             </div>
                         </div>
-                        <button type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg focus:ring-4  bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800">
-                            See Tickets
-                        </button>
+                        <NuxtLink to="/event-detail">
+                            <button type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg focus:ring-4  bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800">
+                                See Tickets
+                            </button>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
