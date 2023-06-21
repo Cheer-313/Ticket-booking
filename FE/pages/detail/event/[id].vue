@@ -7,6 +7,6 @@ const route = useRoute();
         <EventInfo />
         <IntroduceEventInfo />
         <EventTicketList />
-        <EventList />
+        <!-- <EventList /> -->
     </div>
 </template>

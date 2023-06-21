@@ -32,6 +32,8 @@ const getSearchParam = (values) => {
             searchParam = values.selectedItem.event_name;
         } else if (values.selectedItem.venue_name) {
             searchParam = values.selectedItem.venue_name;
+        } else {
+            searchParam = values.selectedItem;
         }
     }
     return convertToKebabCase(searchParam);
