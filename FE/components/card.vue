@@ -14,4 +14,5 @@ const props = defineProps(['artist'])
             </h3>
         </div>
     </div>
+    
 </template>

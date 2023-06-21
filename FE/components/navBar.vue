@@ -1,7 +1,7 @@
 <template>
     <nav class="bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <NuxtLink to="/">
+            <NuxtLink to="/" class="flex items-center">
                 <img src="../assets/brand.svg" class="h-8 mr-3" alt="Flowbite Logo" />
             </NuxtLink>
             <button data-collapse-toggle="navbar-dropdown" type="button"
@@ -85,9 +85,11 @@
                             Ticket</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Sign
+                        <NuxtLink to="/login">
+                            <a href="#" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Sign
                             In</a>
+                        </NuxtLink>
+                        
                     </li>
                 </ul>
 
@@ -96,7 +98,7 @@
     </nav>
 </template>
 
-<script>
+<script setup>
 import { onMounted } from 'vue'
 import { initFlowbite, initDropdowns } from 'flowbite'
 
