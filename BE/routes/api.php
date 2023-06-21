@@ -16,3 +16,4 @@ use App\Http\Controllers;
 */
 Route::match(['get', 'post'], '/home', [Controllers\HomeController::class, 'index']);
 Route::match(['get', 'post'], '/search-box', [Controllers\Controller::class, 'SearchBar']);
+Route::match(['get', 'post'], '/list/{search?}', [Controllers\ListController::class, 'list']);

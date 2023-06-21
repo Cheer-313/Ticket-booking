@@ -151,8 +151,5 @@ const selectAll = ref(false);
     border-color: #4b5563;
 
 }
-
-
-
 </style>
 

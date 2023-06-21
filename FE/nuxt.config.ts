@@ -19,6 +19,7 @@ export default defineNuxtConfig({
         transpile: [
             '@vuepic/vue-datepicker',
             'primevue',
+            '@fortawesome/vue-fontawesome',
         ],
 
     },

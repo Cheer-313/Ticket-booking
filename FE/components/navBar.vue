@@ -1,10 +1,8 @@
 <template>
     <nav class="bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <NuxtLink to="/">
-                <a href="#" class="flex items-center">
-                    <img src="../assets/brand.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-                </a>
+            <NuxtLink to="/" class="flex items-center">
+                <img src="../assets/brand.svg" class="h-8 mr-3" alt="Flowbite Logo" />
             </NuxtLink>
             <button data-collapse-toggle="navbar-dropdown" type="button"
                 class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 hover:bg-gray-700 focus:ring-gray-600"

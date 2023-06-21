@@ -24,6 +24,8 @@
     "flowbite": "^1.6.5",
     "flowbite-datepicker": "^1.2.2",
     "primevue": "^3.29.2",
-    "tw-elements": "^1.0.0-beta2"
+    "tw-elements": "^1.0.0-beta2",
+    "vee-validate": "^4.9.6",
+    "vue-router": "^4.2.2"
   }
 }

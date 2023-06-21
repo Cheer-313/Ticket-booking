@@ -1,10 +1,12 @@
 
 <script setup>
-import { FilterMatchMode, FilterService } from 'primevue/api';
 import AutoComplete from 'primevue/autocomplete';
+import { useForm, useField } from 'vee-validate';
 
-const selectedItem = ref();
 const searchResult = ref();
+const router = useRouter();
+const { handleSubmit, resetForm } = useForm();
+const { value, errorMessage } = useField('selectedItem');
 
 const search = async (event) => {
     let paramSearch = event.query;
@@ -20,23 +22,51 @@ const search = async (event) => {
     }
     searchResult.value = dataSearch;
 };
+
+const getSearchParam = (values) => {
+    let searchParam = null;
+    if (values.selectedItem) {
+        if (values.selectedItem.artist_name) {
+            searchParam = values.selectedItem.artist_name;
+        } else if (values.selectedItem.event_name) {
+            searchParam = values.selectedItem.event_name;
+        } else if (values.selectedItem.venue_name) {
+            searchParam = values.selectedItem.venue_name;
+        }
+    }
+    return convertToKebabCase(searchParam);
+}
+
+const onSubmit = handleSubmit(values => {
+    let searchParam = getSearchParam(values);
+    let nameRoute = values.selectedItem? 'list-search' : 'list';
+    router.push({
+        name: nameRoute,
+        params: {
+            search: searchParam,
+        }
+    })
+    resetForm();
+});
 </script>
 <template>
     <section class="bg-gray-900 flex py-5 items-center">
         <div class="max-w-screen-xl mx-auto w-full">
             <!-- Start coding here -->
             <div class="relative shadow-md bg-gray-800 sm:rounded-lg">
-                <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                <div class="flex flex-col items-center justify-center p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                     <div class="w-full md:w-1/2">
-                        <form>
+                        <form @submit.prevent="onSubmit">
                             <div class="flex">
                                 <div class="relative w-full">
-                                    <!-- <input type="search" id="searchBar"
-                                                                                                                                                                        class="block p-2.5 w-full z-20 text-sm rounded-r-lg border-l-2 border focus:ring-blue-500 bg-gray-700 border-l-gray-700  border-gray-600 placeholder-gray-400 text-white focus:border-blue-500"
-                                                                                                                                                                        placeholder="Search Mockups, Logos, Design Templates..." required> -->
-                                    <AutoComplete :inputClass="'w-full'" v-model="selectedItem" :suggestions="searchResult"
-                                        @complete="search" optionLabel="item_label" optionGroupLabel="group_label"
-                                        optionGroupChildren="items" placeholder="Search for artists, venues and events">
+                                    <AutoComplete :inputClass="'!block !p-2.5 !w-full !text-sm !rounded-r-lg !border-l-2 !border !focus:ring-blue-500 !bg-gray-700 !border-l-gray-700  !border-gray-600 !placeholder-gray-400 !text-white !focus:border-blue-500'" 
+                                                v-model="value" 
+                                                :suggestions="searchResult" 
+                                                @complete="search" 
+                                                optionLabel="item_label" 
+                                                optionGroupLabel="group_label" 
+                                                optionGroupChildren="items" 
+                                                placeholder="Search for artists, venues and events">
                                         <!-- Layout Group -->
                                         <template #optiongroup="slotProps">
                                             <div class="flex align-items-center country-item">
@@ -59,49 +89,6 @@ const search = async (event) => {
                             </div>
                         </form>
                     </div>
-                    <!-- <div
-                        class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                        <div class="flex items-center w-full space-x-3 md:w-auto">
-                            <select id="dates"
-                                class=" border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                                <option selected>All dates</option>
-                                <option value="TD">Today</option>
-                                <option value="TW">This Weekend</option>
-                                <option value="TM<">This Month</option>
-                            </select>
-                            <div id="actionsDropdown"
-                                class="z-10 hidden divide-y  rounded shadow w-44 bg-gray-700 divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-200" aria-labelledby="actionsDropdownButton">
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Today</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
-                                            weekend</a>
-                                                                                                                                                                    </li>
-                                                                                                                                                                    <li>
-                                                                                                                                                                        <a href="#"
-                                                                                                                                                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
-                                                                                                                                                                            weekend</a>
-                                                                                                                                                                    </li>
-                                                                                                                                                                    <li>
-                                                                                                                                                                        <a href="#"
-                                                                                                                                                                            class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">This
-                                                                                                                                                                            Month</a>
-                                                                                                                                                                    </li>
-                                                                                                                                                                </ul>
-                                                                                                                                                            </div>
-                                                                                                                                                            <select id="countries"
-                                                                                                                                                                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                                                                                                                                                                <option selected>Choose a country</option>
-                                                                                                                                                                <option value="US">United States</option>
-                                                                                                                                                                <option value="CA">Canada</option>
-                                                                                                                                                                <option value="FR">France</option>
-                                                                                                                                                                <option value="DE">Germany</option>
-                                                                                                                                                            </select>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div> -->
                 </div>
             </div>
         </div>
