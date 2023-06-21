@@ -59,6 +59,7 @@ class BaseService
                 'items' => $searchVenue ?? [],
             ];
             foreach ($searchEvent as $key => $event) {
+                $event['event_img'] = base64_encode($event['event_img']);
                 $event['item_label'] = $event['event_name'];
                 $searchEvent[$key] = $event;
             }

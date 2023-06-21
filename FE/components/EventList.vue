@@ -8,12 +8,12 @@ const props = defineProps(['events'])
             <div v-if="events.length > 0" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 <article v-for="event in events" class="max-w-xs text-white border rounded-lg border-gray-500">
                     <a href="#">
-                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png"
+                        <img :src="'data:image/jpeg;base64,'+ event['event_img']"
                             class="mb-5 rounded-lg w-full" alt="Image 1">
                     </a>
                     <div class="px-2">
                         <h2 class="mb-2 text-xl font-bold leading-tight ">
-                            <NuxtLink :to="{name:'detail-type-id', params:{type:'event', id: event['id']}}">{{ event['event_name']}}</NuxtLink>
+                            <NuxtLink :to="{name:'detail-event-id', params:{id: event['id']}}">{{ event['event_name']}}</NuxtLink>
                         </h2>
                         <div class="flex justify-between py-2">
                             <div class="invisible">

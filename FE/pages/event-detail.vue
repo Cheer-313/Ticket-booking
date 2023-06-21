@@ -1,6 +1,6 @@
 <template>
     <div>
-        <eventInfo />
+        <EventInfo />
         <IntroduceEventInfo />
         <EventTicketList />
         <EventList />
