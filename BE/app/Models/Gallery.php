@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ArtistEvent extends Model
+class Gallery extends Model
 {
-    use HasFactory;
-
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 't_artists_events';
+    protected $table = 'm_galleries';
 
     /**
      * The attributes that are mass assignable.

@@ -81,4 +81,22 @@ class BaseService
         }
         return $result;
     }
+
+    public function modifyDataHaveImage($listData, $listKeyImg) {
+        $result = [];
+        try {
+            foreach($listData as $key => $data) {
+                foreach ($listKeyImg as $keyImg) {
+                    if (!empty($data[$keyImg])) {
+                        $data[$keyImg] = base64_encode($data[$keyImg]);
+                    }
+                    $listData[$key] = $data;
+                }
+            }
+            $result = $listData;
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
+    }
 }

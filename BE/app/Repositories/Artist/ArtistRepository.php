@@ -90,4 +90,46 @@ class ArtistRepository extends BaseRepository implements ArtistRepositoryInterfa
         }
         return $result;
     }
+
+    public function getDetailArtist($id) {
+        $result = [];
+        try {
+            $select = [
+                'm_artists.id',
+                'm_artists.artist_name',
+                'm_artists.text_about',
+                'm_artists.artist_img',
+                't_events.event_name',
+                't_events.event_date',
+                't_events.start_time',
+                't_events.end_time',
+                'm_venues.venue_name',
+                'm_venues.address',
+            ];
+            $query = $this->model->select($select)
+                    ->leftJoin('t_artists_events', function ($join) {
+                        $join->on('m_artists.id', 't_artists_events.artist_id')
+                            ->where('t_artists_events.deleted_flag', 0);
+                    })
+                    ->leftJoin('t_events', function ($join) {
+                        $join->on('t_artists_events.event_id', 't_events.id')
+                            ->where('t_artists_events.deleted_flag', 0);
+                    })
+                    ->leftJoin('m_venues', function ($join) {
+                        $join->on('m_venues.id', 't_events.venue_id')
+                            ->where('m_venues.deleted_flag', 0);
+                    })
+                    ->where([
+                        ['m_artists.id', $id],
+                        ['m_artists.deleted_flag', 0],
+                    ]);
+            // $sql = str_replace(array('?'), array('\'%s\''), $query->toSql());
+            // $sql = vsprintf($sql, $query->getBindings());
+            // dd($sql);
+            $result = $query->get()->toArray() ?? [];
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
+    }
 }
