@@ -7,11 +7,12 @@ const searchResult = ref();
 const router = useRouter();
 const { handleSubmit, resetForm } = useForm();
 const { value, errorMessage } = useField('selectedItem');
+const config = useRuntimeConfig()
 
 const search = async (event) => {
     let paramSearch = event.query;
     let dataSearch = [];
-    let { data: response, error } = await useFetch("http://127.0.0.1:8000/api/search-box", {
+    let { data: response, error } = await useFetch(config.public.MS1_API_URL+"/api/search-box", {
         method: 'GET',
         query: { search_param: paramSearch }
     });

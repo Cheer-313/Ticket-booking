@@ -2,12 +2,13 @@
 const route = useRoute();
 const code = ref();
 const searchParam = ref();
+const config = useRuntimeConfig()
 
 code.value = route.query.code;
 searchParam.value = route.params.search;
 
 // Get data search
-const { data:list, error } = await useFetch("http://127.0.0.1:8000/api/list/" + searchParam.value, {
+const { data:list, error } = await useFetch(config.public.MS1_API_URL+"/api/list/" + searchParam.value, {
     method: 'GET',
     query: {
         code: code.value,
