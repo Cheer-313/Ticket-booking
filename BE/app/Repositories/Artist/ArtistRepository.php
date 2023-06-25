@@ -99,6 +99,7 @@ class ArtistRepository extends BaseRepository implements ArtistRepositoryInterfa
                 'm_artists.artist_name',
                 'm_artists.text_about',
                 'm_artists.artist_img',
+                't_events.id as event_id',
                 't_events.event_name',
                 't_events.event_date',
                 't_events.start_time',
@@ -125,7 +126,6 @@ class ArtistRepository extends BaseRepository implements ArtistRepositoryInterfa
                     ]);
             // $sql = str_replace(array('?'), array('\'%s\''), $query->toSql());
             // $sql = vsprintf($sql, $query->getBindings());
-            // dd($sql);
             $result = $query->get()->toArray() ?? [];
         } catch (Exception $e) {
             throw $e;
