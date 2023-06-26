@@ -1,3 +1,12 @@
+<script setup lang="ts">
+const { status, signOut } = useAuth()
+const loggedIn = computed(() => status.value === 'authenticated')
+
+async function handleSignOut() {
+    await signOut()
+}
+</script>
+
 <template>
     <nav class="bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -14,7 +23,6 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </button>
-
             <div class="hidden w-full md:block md:w-auto bg-gray-500" id="navbar-dropdown">
                 <ul
                     class="flex flex-col font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
@@ -85,28 +93,20 @@
                             Ticket</a>
                     </li>
                     <li>
-                        <NuxtLink to="/login">
-                            <a href="#" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Sign
-                            In</a>
-                        </NuxtLink>
-                        
+                        <div v-if="loggedIn" @click="handleSignOut">
+                            <NuxtLink to="/login" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
+                                Sign Out
+                            </NuxtLink>
+                        </div>
+                        <div v-else>
+                            <NuxtLink to="/login" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
+                                Sign In
+                            </NuxtLink>   
+                        </div>
+                                 
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
 </template>
-
-<script setup>
-import { onMounted } from 'vue'
-import { initFlowbite, initDropdowns } from 'flowbite'
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-    initFlowbite();
-    initDropdowns();
-})
-</script>
-
-<style scoped></style>

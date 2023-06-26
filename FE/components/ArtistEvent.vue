@@ -1,6 +1,5 @@
 <template>
     <section class="items-center bg-gray-900 py-5 divide-y-0">
-
         <div v-for="i in 4" class="flex">
             <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
     <!-- Start coding here -->
@@ -26,13 +25,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-    </section>
-    
+        </div>     
+    </section> 
 </template>
-
-<script setup>
-
-</script>

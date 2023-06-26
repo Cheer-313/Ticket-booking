@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { onMounted } from 'vue'
 import { initFlowbite, initDropdowns } from 'flowbite'
 

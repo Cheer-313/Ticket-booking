@@ -1,13 +1,9 @@
 <template>
     <section class=" pt-8 lg:pb-8 bg-gray-800">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
-            <article
-                class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue format-invert text-gray-200">
-
+            <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue format-invert text-gray-200">
                 <h1 class="mb-4 text-3xl font-extrabold leading-tightlg:mb-6 lg:text-4xl border-b-2 p-4">
                     Thông tin vé</h1>
-
-
                 <div>
                     <div
                         class="flex items-center justify-between w-full p-5 font-medium text-left border focus:ring-4 focus:ring-gray-800 border-gray-700 text-gray-400 hover:bg-gray-800">

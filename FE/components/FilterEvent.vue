@@ -1,14 +1,5 @@
-
 <script setup>
-import { onMounted } from 'vue'
-import { initFlowbite, initDropdowns } from 'flowbite'
 import MultiSelect from 'primevue/multiselect';
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-    initFlowbite();
-    initDropdowns();
-})
 
 const categories = ref(
     [
@@ -17,14 +8,9 @@ const categories = ref(
         {name: 'Movie'}
     ]
 );
-
 const selectedCategories = ref();
 const selectAll = ref(false);
-
-
-
 </script>
-
 
 <template>
     <section class="bg-gray-800 flex items-center">
@@ -128,7 +114,6 @@ const selectAll = ref(false);
                         </div> -->
                         <MultiSelect v-model="selectedCategories" display="chip" :options="categories" optionLabel="name" placeholder="Tất cả sự kiện"
                             :maxSelectedLabels="3" class="w-full md:w-20rem"/>
-
                     </div>
                     <div class="w-full md:w-1/3">
                         <select id="times"
@@ -149,7 +134,6 @@ const selectAll = ref(false);
 .p-multiselect {
     background-color: #374151;
     border-color: #4b5563;
-
 }
 </style>
 

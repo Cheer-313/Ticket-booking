@@ -13,14 +13,24 @@ export default defineNuxtConfig({
         },
     },
     modules: [
-        '@nuxtjs/tailwindcss'
+        '@nuxtjs/tailwindcss',
+        '@sidebase/nuxt-auth'
     ],
+    // auth: {
+    //     enableGlobalAppMiddleware: true,
+    // },
+    runtimeConfig: {
+        GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+        API_ROUTE_SECRET: process.env.API_ROUTE_SECRET,
+        public: {
+            GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
+        },
+    },
     build: {
         transpile: [
             '@vuepic/vue-datepicker',
             'primevue',
             '@fortawesome/vue-fontawesome',
         ],
-
     },
 })

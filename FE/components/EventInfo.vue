@@ -4,7 +4,6 @@
             class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
             <div class="grid grid-cols-12 gap-10  p-1 py-8 px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-2">
                 <div class="flex rounded-lg sm:col-span-8 items-baseline">
-
                     <div class="text-center border ml-4 w-40 h-fit text-white">
                         <p class="text-xs bg-red-600 p-2 font-bold">THÁNG 7</p>
                         <p class="text-4xl">01</p>
@@ -27,8 +26,6 @@
                             Đường 3/4, Đồi Cà Ri Dê, Phường 3, Thành phố Đà Lạt
                         </p>
                     </div>
-
-
                 </div>
                 <div class="col-span-12 rounded-lg p-4 mx-auto sm:col-span-4 ">
                     <button type="button"
