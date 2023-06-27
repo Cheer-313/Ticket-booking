@@ -23,4 +23,11 @@ export default defineNuxtConfig({
         ],
 
     },
+    runtimeConfig: {
+        public: {
+            MS1_API_URL: process.env.MS1_API_URL,
+            MS2_API_URL: process.env.MS2_API_URL,
+            EMAIL: process.env.EMAIL,
+        }
+    },
 })

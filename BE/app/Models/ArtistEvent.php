@@ -14,7 +14,7 @@ class ArtistEvent extends Model
      *
      * @var string
      */
-    protected $table = 'm_artists_events';
+    protected $table = 't_artists_events';
 
     /**
      * The attributes that are mass assignable.

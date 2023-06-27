@@ -1,5 +1,6 @@
 <script setup>
-const { data, error } = await useFetch("http://127.0.0.1:8000/api/home", {
+const config = useRuntimeConfig()
+const { data, error } = await useFetch(config.public.MS1_API_URL+"/api/home", {
     method: 'GET',
 });
 </script>

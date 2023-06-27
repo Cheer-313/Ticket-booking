@@ -88,4 +88,40 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
         }
         return $result;
     }
+
+    public function getDetailEvent($id) {
+        $result = [];
+        try {
+            $select = [
+                't_events.id',
+                't_events.venue_id',
+                't_events.genre_id',
+                't_events.event_name',
+                't_events.event_date',
+                't_events.start_time',
+                't_events.end_time',
+                't_events.event_img',
+                't_events.event_description',
+                'm_venues.venue_name',
+                'm_venues.address',
+                'm_venues.post_code',
+                'm_venues.venue_img',
+            ];
+            $query = $this->model->select($select)
+                    ->leftJoin('m_venues', function ($join) {
+                        $join->on('m_venues.id', 't_events.venue_id')
+                            ->where('m_venues.deleted_flag', 0);
+                    })
+                    ->where([
+                        ['t_events.id', $id],
+                        ['t_events.deleted_flag', 0],
+                    ]);
+            // $sql = str_replace(array('?'), array('\'%s\''), $query->toSql());
+            // $sql = vsprintf($sql, $query->getBindings());
+            $result = $query->get()->toArray() ?? [];
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
+    }
 }

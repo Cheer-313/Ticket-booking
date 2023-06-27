@@ -1,8 +1,9 @@
 <script setup>
 const route = useRoute();
+const config = useRuntimeConfig()
 
 // Get data search
-const { data:list, error } = await useFetch("http://127.0.0.1:8000/api/list/", {
+const { data:list, error } = await useFetch(config.public.MS1_API_URL+"/api/list/", {
     method: 'GET',
 });
 console.log(list.value, error.value);

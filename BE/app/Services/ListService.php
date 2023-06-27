@@ -43,29 +43,15 @@ class ListService extends BaseService
 
             // Get list artist
             $listArtist = $this->artistRepository->getListArtistByCondition($condition['code'], $condition['search']);
-            $listArtist = $this->modifyDataHaveImage($listArtist, 'artist_img');
+            $listArtist = $this->modifyDataHaveImage($listArtist, ['artist_img']);
 
             //Get list event
             $listEvent = $this->eventRepository->getListEventByCondition($condition['code'], $condition['search']);
-            $listEvent = $this->modifyDataHaveImage($listEvent, 'event_img');
+            $listEvent = $this->modifyDataHaveImage($listEvent, ['event_img']);
             $result = [
                 'artist' => $listArtist ?? [],
                 'event' => $listEvent ?? [],
             ];
-        } catch (Exception $e) {
-            throw $e;
-        }
-        return $result;
-    }
-
-    public function modifyDataHaveImage($listData, $keyImg) {
-        $result = [];
-        try {
-            foreach($listData as $key => $data) {
-                $data[$keyImg] = base64_encode($data[$keyImg]);
-                $listData[$key] = $data;
-            }
-            $result = $listData;
         } catch (Exception $e) {
             throw $e;
         }
