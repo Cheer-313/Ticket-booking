@@ -19,13 +19,6 @@ export default defineNuxtConfig({
     // auth: {
     //     enableGlobalAppMiddleware: true,
     // },
-    runtimeConfig: {
-        GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-        API_ROUTE_SECRET: process.env.API_ROUTE_SECRET,
-        public: {
-            GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
-        },
-    },
     build: {
         transpile: [
             '@vuepic/vue-datepicker',
@@ -34,10 +27,13 @@ export default defineNuxtConfig({
         ],
     },
     runtimeConfig: {
+        GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+        API_ROUTE_SECRET: process.env.API_ROUTE_SECRET,
         public: {
             MS1_API_URL: process.env.MS1_API_URL,
             MS2_API_URL: process.env.MS2_API_URL,
             EMAIL: process.env.EMAIL,
+            GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
         }
     },
 })
