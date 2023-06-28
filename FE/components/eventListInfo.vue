@@ -21,7 +21,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="max-w-screen-xl">
                 <h1 class="mb-4 text-4xl tracking-tight font-extrabold text-white">Concert Tickets</h1>
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">Concert Tickets Tickets</h2>
@@ -52,6 +51,4 @@
     </section>
 </template>
 
-<script>
-</script>
 

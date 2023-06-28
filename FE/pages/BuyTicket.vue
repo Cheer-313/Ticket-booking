@@ -1,15 +1,12 @@
 <template>
     <div>
         <EventInfo />
+        <BuyTicketForm />
     </div>
 </template>
 
-<script setup>
-
-</script>
-
 <style>
-    button.bg-red-600 {
+    button.bg-red-600, section.bg-gray-900 {
         display: none;
     }
 </style>

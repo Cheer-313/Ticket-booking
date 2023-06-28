@@ -27,8 +27,6 @@ const { event } = toRefs(props);
                             {{ event.address }}
                         </p>
                     </div>
-
-
                 </div>
                 <div class="col-span-12 rounded-lg p-4 mx-auto sm:col-span-4 ">
                     <button type="button" class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2">

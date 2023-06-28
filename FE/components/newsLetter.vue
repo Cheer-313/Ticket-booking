@@ -18,7 +18,7 @@
                             </div>
                             <input
                                 class="block p-3 pl-10 w-full text-sm rounded-lg border sm:rounded-none sm:rounded-l-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Enter your email" type="email" id="email" required="">
+                                placeholder="Enter your email" type="email" id="email">
                         </div>
                         <div>
                             <button type="submit"
@@ -33,9 +33,3 @@
         </div>
     </section>
 </template>
-
-<script>
-
-</script>
-
-<style></style>
