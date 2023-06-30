@@ -1,0 +1,30 @@
+[
+    {
+      "id": 0,
+      "name": "Early Bird (EB)",
+      "price": "599,000 VND",
+      "info": "Check-in, check-out mọi lúc",
+      "number": 0
+    },
+    {
+      "id": 1,
+      "name": "Premium",
+      "price": "799,000 VND",
+      "info": "Check-in, check-out 1",
+      "number": 0
+    },
+    {
+      "id": 2,
+      "name": "Vip",
+      "price": "899,000 VND",
+      "info": "Check-in, check-out 2",
+      "number": 0
+    },
+    {
+      "id": 3,
+      "name": "Standard",
+      "price": "499,000 VND",
+      "info": "Check-in, check-out 3",
+      "number": 0
+    }
+  ]
