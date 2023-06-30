@@ -13,7 +13,9 @@ export default defineNuxtConfig({
         },
     },
     modules: [
-        '@nuxtjs/tailwindcss'
+        '@nuxtjs/tailwindcss',
+        '@sidebase/nuxt-auth',
+        'dayjs-nuxt',
     ],
     build: {
         transpile: [
@@ -30,4 +32,7 @@ export default defineNuxtConfig({
             EMAIL: process.env.EMAIL,
         }
     },
+    dayjs: {
+        plugins: ['timezone', 'customParseFormat'],
+      }
 })
