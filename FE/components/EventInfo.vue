@@ -2,6 +2,16 @@
 const props = defineProps(['event']);
 const { event } = toRefs(props);
 const dayjs = useDayjs();
+const router = useRouter();
+
+const onClickBuyTicket = () => {
+    router.push({
+        name: 'tickets-id-buy',
+        params: {
+            id: event.value.event_id,
+        }
+    })
+}
 </script>
 <template>
     <div>
@@ -30,7 +40,7 @@ const dayjs = useDayjs();
                     </div>
                 </div>
                 <div class="col-span-12 rounded-lg p-4 mx-auto sm:col-span-4 ">
-                    <button type="button" class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2">
+                    <button @click="onClickBuyTicket" type="button" class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2">
                         BUY TICKET
                     </button>
                 </div>
