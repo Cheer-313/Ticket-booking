@@ -14,7 +14,8 @@ export default defineNuxtConfig({
     },
     modules: [
         '@nuxtjs/tailwindcss',
-        '@sidebase/nuxt-auth'
+        '@sidebase/nuxt-auth',
+        'dayjs-nuxt',
     ],
     // auth: {
     //     enableGlobalAppMiddleware: true,
@@ -36,4 +37,7 @@ export default defineNuxtConfig({
             GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
         }
     },
+    dayjs: {
+        plugins: ['timezone', 'customParseFormat'],
+      }
 })

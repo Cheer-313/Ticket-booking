@@ -18,7 +18,7 @@ const props = defineProps(['events'])
                         </h2>
                         <div class="flex justify-between py-2">
                             <div class="invisible">
-                                <span>Từ </span>
+                                <span>From </span>
                                 <strong class="text-[#2DC275]">
                                     900.000 VNĐ
                                 </strong>
