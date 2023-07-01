@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen bg-gray-800">
         <EventInfo />
-        <BuyTicketForm />
+        <BuyTicketConfirmUserInfo />
     </div>
 </template>
 

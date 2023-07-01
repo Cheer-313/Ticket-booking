@@ -1,5 +1,5 @@
 <template>
-    <footer class=" shadow bg-gray-900">
+    <div class="shadow bg-gray-900">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <NuxtLink to="/" class="flex items-center mb-4 sm:mb-0">
@@ -21,8 +21,8 @@
                 </ul>
             </div>
             <hr class="my-6 sm:mx-auto border-gray-700 lg:my-8" />
-            <span class="block text-sm  sm:text-center text-gray-400">© 2023 <a href="#"
-                    class="hover:text-gray-200">Flowbite™</a>. All Rights Reserved.</span>
+            <span class="block text-sm  sm:text-center text-gray-400">© 2023 
+                <NuxtLink to="/" class="hover:text-gray-200">Ticket Line™</NuxtLink>. All Rights Reserved.</span>
         </div>
-    </footer>
+    </div>
 </template>

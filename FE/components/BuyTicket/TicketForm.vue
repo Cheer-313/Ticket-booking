@@ -1,5 +1,9 @@
 <script setup>
-    
+import userData from '~/assets/ticket.json'
+const users = userData
+
+const counter = ref(0);
+
 </script>
 
 <template>
@@ -12,49 +16,32 @@
                         <p class="w-1/4 text-right">GIÁ VÉ</p>
                         <p class="w-1/4 text-right">SỐ LƯỢNG</p>
                     </div>
-                    <div>
+                    <div v-for="user in users" :key="user.id">
                         <div class="col-span-4 flex pt-5">
-                            <p class="w-2/4 ">Early Bird (EB)</p>
-                            <p class="w-1/4 text-right">699,000 VND</p>
+                            <p class="w-2/4 ">{{ user.name }}</p>
+                            <p class="w-1/4 text-right">{{ user.price }}</p>
                             <div class="w-1/4 text-right">
-                                <buy-ticket-counter-button />
+                                <div class="flex justify-end">
+                                    <button @click="counter--" class="px-2 bg-gray-500  border border-gray-400 disabled:bg-gray-400"  :disabled="counter <= 0">-</button>
+                                    <p class="w-10 text-center bg-gray-500 border border-gray-400"> {{ user.number }}</p>
+                                    <button @click="counter++" class="px-2 bg-gray-500  border border-gray-400">+</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-span-4 flex items-center p-2 space-x-5 bg-gray-500 mt-5">
                             <font-awesome-icon :icon="['fas', 'circle-info']" />
-                            <p>Check-in, check-out mọi lúc</p>
+                            <p>{{ user.info }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-span-2">
                     <div class="block max-w-sm p-6 border rounded-lg shadow bg-gray-600 border-gray-700 m-auto mt-5 lg:mt-0">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-white">THÔNG TIN ĐẶT VÉ</h5>
-                        <div class="flex justify-between text-white border-t py-3">
-                            <p>Loại vé</p>
-                            <p>Số lượng</p>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-dotted border-t pt-2">
-                            <div class="">
-                                <p>Early Bird</p>
-                                <p class="text-xs">699,000 VND</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="">1</p>
-                                <p class="text-xs">699,000 VND</p>
-                            </div>
-                        </div>
-                        <div class="text-gray-300 text-lg bg-gray-500 -m-6 mt-6">
-                            <div class="flex justify-between mx-6 py-3 ">
-                                <p>Tổng cộng</p>
-                                <p>699,000 VND</p>
-                            </div>
-                        </div>
+                        <buy-ticket-info-ticket-order />
                     </div>
                     <button class="w-full p-6 text-white text-xl bg-green-600 hover:bg-green-500 mt-5 rounded-lg">
                         Tiếp tục
                     </button>
                     <p class="hidden text-sm bg-red-600 p-2 m-auto mt-5 text-white w-fit">Xin hãy chọn vé cần mua</p>
-
                 </div>
             </div>
         </section>

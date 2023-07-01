@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { status, signOut } = useAuth()
+const { data, status, signOut } = useAuth()
 const loggedIn = computed(() => status.value === 'authenticated')
 
 async function handleSignOut() {
@@ -24,10 +24,9 @@ async function handleSignOut() {
                 </svg>
             </button>
             <div class="hidden w-full md:block md:w-auto bg-gray-500" id="navbar-dropdown">
-                <ul
-                    class="flex flex-col font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
+                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
                     <li>
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbarSport"
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbarSport" data-dropdown-trigger="hover"
                             class="flex items-center justify-between w-full py-2 pl-3 pr-4 rounded md:border-0 md:p-0 md:w-auto text-white md:hover:text-gray-400 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent">Thể
                             thao
                             <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -56,7 +55,7 @@ async function handleSignOut() {
                         </div>
                     </li>
                     <li>
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbarConcert"
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbarConcert" data-dropdown-trigger="hover"
                             class="flex items-center justify-between w-full py-2 pl-3 pr-4 rounded md:border-0 md:p-0 md:w-auto text-white md:hover:text-gray-400 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent">Concert
                             <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -93,10 +92,32 @@ async function handleSignOut() {
                             Ticket</a>
                     </li>
                     <li>
-                        <div v-if="loggedIn" @click="handleSignOut">
-                            <NuxtLink to="/login" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
+                        <div v-if="loggedIn">
+                            <li>
+                                <button id="dropdownUser" data-dropdown-toggle="dropdownNavbarUser" data-dropdown-trigger="hover"
+                                    class="flex items-center justify-between w-full py-2 pl-3 pr-4 rounded md:border-0 md:p-0 md:w-auto text-white md:hover:text-gray-400 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent">{{ data?.user?.name }}
+                                    <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg></button>
+                                <!-- Dropdown menu -->
+                                <div id="dropdownNavbarUser"
+                                    class="z-10 hidden font-normal divide-y rounded-lg shadow md:w-44 bg-gray-800 divide-gray-600 w-full">
+                                    <ul class="py-2 text-sm text-gray-400 " aria-labelledby="dropdownLargeButton">
+                                        <li>
+                                            <a href="#" class="block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Profile</a>
+                                        </li>
+                                        <li>
+                                            <a @click="handleSignOut" to="/login" class=" cursor-pointer block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Sign out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <!-- <NuxtLink  class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
                                 Sign Out
-                            </NuxtLink>
+                            </NuxtLink> -->
                         </div>
                         <div v-else>
                             <NuxtLink to="/login" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
