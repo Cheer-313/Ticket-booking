@@ -1,5 +1,5 @@
 <script setup>
-    
+const { data } = useAuth()
 </script>
 
 <template>
@@ -12,15 +12,11 @@
                         <div class="space-y-8">
                             <div>
                                 <h5 class="block mb-2 text-sm font-medium text-gray-300">Họ và tên</h5>
-                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">Mạch Trung Tín</p>
+                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">{{ data?.user?.name }}</p>
                             </div>
                             <div>
                                 <h5 class="block mb-2 text-sm font-medium text-gray-300">Email</h5>
-                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">machtrungtin2x@gmail.com</p>
-                            </div>
-                            <div>
-                                <h5 class="block mb-2 text-sm font-medium text-gray-300">Điện thoại</h5>
-                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">0856353804</p>
+                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">{{ data?.user?.email }}</p>
                             </div>
                         </div>
                     </div>

@@ -52,7 +52,7 @@ const onSubmit = handleSubmit(values => {
 });
 </script>
 <template>
-    <section class="bg-gray-900 flex py-5 items-center">
+    <section id="searchBar" class="bg-gray-900 flex py-5 items-center">
         <div class="max-w-screen-xl mx-auto w-full">
             <!-- Start coding here -->
             <div class="relative shadow-md bg-gray-800 sm:rounded-lg">
