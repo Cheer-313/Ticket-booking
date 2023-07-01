@@ -1,6 +1,7 @@
 <script setup>
 const props = defineProps(['artist'])
 </script>
+
 <template>
     <div class="items-center rounded-xl shadow bg-gray-900 border-gray-700">
         <a :href="'/detail/artist/' + artist['id']">
@@ -13,6 +14,5 @@ const props = defineProps(['artist'])
                 <a :href="'/detail/artist/' + artist['id']">{{ artist['artist_name'] }}</a>
             </h3>
         </div>
-    </div>
-    
+    </div>  
 </template>

@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="min-h-screen">
         <TheHeader />
         <slot />
         <TheFooter />
     </div>
 </template>
 
-<script>
+<script setup>
 import { onMounted } from 'vue'
 import { initFlowbite, initDropdowns } from 'flowbite'
 
