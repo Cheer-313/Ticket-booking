@@ -5,7 +5,9 @@ const {ticketSlot} = toRefs(props);
 const showError = ref(false);
 // Add new key to array
 ticketSlot.value.forEach(element => {
-    element.booked_slot = 0;
+    if (!('booked_slot' in element)) {
+        element.booked_slot = 0;
+    }
 });
 
 // Update selected ticket
@@ -19,11 +21,11 @@ const updateBookedTicket = (id, type) => {
 
 const submitTicketBooked = () => {
     let bookedTicket = ticketSlot.value.filter(o => o.booked_slot > 0);
-    console.log(bookedTicket);
     if (bookedTicket.length == 0) {
         showError.value = true;
     } else {
-        localStorage.setItem('booked-ticket', bookedTicket);
+        localStorage.setItem('booked-ticket', JSON.stringify(bookedTicket));
+        // console.log(JSON.parse(localStorage.getItem('booked-ticket')));
         emit('submitForm');
     }
 }

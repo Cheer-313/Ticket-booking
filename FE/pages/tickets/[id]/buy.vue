@@ -1,4 +1,5 @@
 <script setup>
+definePageMeta({middleware: 'auth'})
 const route = useRoute();
 const router = useRouter();
 const config = useRuntimeConfig();
@@ -24,6 +25,15 @@ const { data:slots, error2 } = await useFetch(config.public.MS2_API_URL+"/api/ti
     },
 });
 ticketSlot.value = slots.value.ticket_slot;
+
+// Check value exist in session
+if (process.client && localStorage.getItem('booked-ticket')) {
+    JSON.parse(localStorage.getItem('booked-ticket')).forEach(element => {
+        let idx = ticketSlot.value.findIndex( o => o.id == element.id);
+        ticketSlot.value[idx] = element;
+    });
+    localStorage.removeItem("booked-ticket");
+}
 
 function submitBuyTicketForm() {
     router.push({
