@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute();
+const router = useRouter();
 const config = useRuntimeConfig();
 const eventId = ref();
 const eventDetail = ref([]);
@@ -23,12 +24,21 @@ const { data:slots, error2 } = await useFetch(config.public.MS2_API_URL+"/api/ti
     },
 });
 ticketSlot.value = slots.value.ticket_slot;
+
+function submitBuyTicketForm() {
+    router.push({
+        name: 'tickets-id-confirm',
+        params: {
+            id: event.value.event_id,
+        }
+    })
+}
 </script>
 
 <template>
     <div class="min-h-screen bg-gray-800 buy-ticket">
         <EventInfo :event="eventDetail[0]"/>
-        <BuyTicketForm :ticket-slot="ticketSlot"/>
+        <BuyTicketForm :ticket-slot="ticketSlot" @submit-form="submitBuyTicketForm"/>
     </div>
 </template>
 
