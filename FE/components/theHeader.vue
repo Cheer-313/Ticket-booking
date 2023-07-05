@@ -1,6 +1,8 @@
 <template>
-    <NavBar />
-    <SearchBar />
+    <div>
+        <NavBar />
+        <SearchBar />
+    </div>
 </template>
 
 <script>

@@ -6,6 +6,8 @@ const { data } = useAuth()
 </script>
 
 <template>
-    <h1>Hi! I'm protected</h1>
-    <pre>{{ data }}</pre>
+    <div>
+        <h1>Hi! I'm protected</h1>
+        <pre>{{ data }}</pre>
+    </div>
 </template>

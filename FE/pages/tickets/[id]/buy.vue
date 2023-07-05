@@ -46,9 +46,11 @@ function submitBuyTicketForm() {
 </script>
 
 <template>
-    <div class="min-h-screen bg-gray-800 buy-ticket">
-        <EventInfo :event="eventDetail[0]"/>
-        <BuyTicketForm :ticket-slot="ticketSlot" @submit-form="submitBuyTicketForm"/>
+    <div>
+        <div class="min-h-screen bg-gray-800 buy-ticket">
+            <EventInfo :event="eventDetail[0]"/>
+            <BuyTicketForm :ticket-slot="ticketSlot" @submit-form="submitBuyTicketForm"/>
+        </div>
     </div>
 </template>
 

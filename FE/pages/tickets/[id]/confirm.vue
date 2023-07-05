@@ -17,9 +17,11 @@ eventDetail.value = event.value.event_detail;
 
 </script>
 <template>
-    <div class="min-h-screen bg-gray-800">
-        <EventInfo :event="eventDetail[0]"/>
-        <BuyTicketConfirmUserInfo :event-id="eventId"/>
+    <div>
+        <div class="min-h-screen bg-gray-800">
+            <EventInfo :event="eventDetail[0]"/>
+            <BuyTicketConfirmUserInfo :event-id="eventId"/>
+        </div>
     </div>
 </template>
 

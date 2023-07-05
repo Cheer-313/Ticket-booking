@@ -4,5 +4,7 @@ const { data: token } = await useFetch('/api/token', { headers })
 </script>
 
 <template>
-    <pre>{{ token || 'No token present, are you logged in?'}}</pre>
+    <div>
+        <pre>{{ token || 'No token present, are you logged in?'}}</pre>
+    </div>
 </template>
