@@ -74,4 +74,14 @@ abstract class BaseRepository implements BaseRepositoryInterface
         }
         return $result;
     }
+
+    public function insert($data) {
+        $result = [];
+        try {
+            $result = $this->model->insert($data);
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
+    }
 }
