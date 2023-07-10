@@ -15,3 +15,4 @@ use App\Http\Controllers;
 |
 */
 Route::match(['get', 'post'], '/ticket/slot', [Controllers\TicketController::class, 'ticketSlot']);
+Route::match(['post'], '/ticket/booking', [Controllers\TicketController::class, 'bookingSlot']);

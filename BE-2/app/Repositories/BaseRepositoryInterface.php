@@ -30,7 +30,7 @@ interface BaseRepositoryInterface
      * @param array $attributes
      * @return mixed
      */
-    public function update($id, $attributes = []);
+    public function update($data, $condition);
 
     /**
      * Delete
