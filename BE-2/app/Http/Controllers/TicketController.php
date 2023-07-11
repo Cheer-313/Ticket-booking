@@ -21,4 +21,9 @@ class TicketController extends Controller
         $response = $this->ticketService->getDataTicketSlot($request);
         return response()->json($response, 200);
     }
+
+    public function bookingSlot (Request $request) {
+        $response = $this->ticketService->insertBookingTicket($request);
+        return response()->json($response, 200);
+    }
 }

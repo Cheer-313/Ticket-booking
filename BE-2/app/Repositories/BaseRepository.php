@@ -31,15 +31,15 @@ abstract class BaseRepository implements BaseRepositoryInterface
         return $this->model->create($attributes);
     }
 
-    public function update($id, $attributes = [])
+    public function update($data, $condition)
     {
-        $result = $this->find($id);
-        if ($result) {
-            $result->update($attributes);
-            return $result;
+        $result = [];
+        try {
+            $result = $this->model->where($condition)->update($data);
+        } catch (Exception $e) {
+            throw $e;
         }
-
-        return false;
+        return $result;
     }
 
     public function delete($id)
@@ -59,6 +59,26 @@ abstract class BaseRepository implements BaseRepositoryInterface
         try {
             $query = $this->model->where($condition);
             $result = !empty($query->get()) ? $query->get()->toArray() : [];
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
+    }
+
+    public function insertGetId($data) {
+        $result = [];
+        try {
+            $result = $this->model->insertGetId($data);
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $result;
+    }
+
+    public function insert($data) {
+        $result = [];
+        try {
+            $result = $this->model->insert($data);
         } catch (Exception $e) {
             throw $e;
         }

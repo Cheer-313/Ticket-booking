@@ -2,9 +2,14 @@
 const { data } = useAuth()
 const props = defineProps(['eventId']);
 const ticketSlot = ref([]);
+const emit = defineEmits(['submitForm'])
 
 if (process.client) {
     ticketSlot.value = JSON.parse(localStorage.getItem('booked-ticket'));
+}
+
+const bookingTicket = () => {
+    emit('submitForm');
 }
 </script>
 
@@ -34,7 +39,7 @@ if (process.client) {
                     <div class="block max-w-sm p-6 border rounded-lg shadow bg-gray-600 border-gray-700 m-auto mt-5 lg:mt-0">
                         <buy-ticket-info-ticket-order :ticket-info="ticketSlot"/>
                     </div>
-                    <button class="w-full p-6 text-white text-xl bg-green-600 hover:bg-green-500 mt-5 rounded-lg">
+                    <button @click="bookingTicket()" class="w-full p-6 text-white text-xl bg-green-600 hover:bg-green-500 mt-5 rounded-lg">
                         Submit
                     </button>
                     <NuxtLink :to="{name:'tickets-id-buy', params:{id: eventId}}">
