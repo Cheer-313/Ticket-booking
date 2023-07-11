@@ -25,7 +25,6 @@ const submitTicketBooked = () => {
         showError.value = true;
     } else {
         localStorage.setItem('booked-ticket', JSON.stringify(bookedTicket));
-        // console.log(JSON.parse(localStorage.getItem('booked-ticket')));
         emit('submitForm');
     }
 }
