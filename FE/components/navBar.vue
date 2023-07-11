@@ -1,10 +1,19 @@
 <script setup lang="ts">
+import { routerKey } from 'vue-router';
+
+// import { IUser } from '~/types/IUser';
+// import { userLogout } from '~/composables/useAuth';
+
+// const user = useState<IUser>('user')
+// const logout = userLogout
+
 const { data, status, signOut } = useAuth()
 const loggedIn = computed(() => status.value === 'authenticated')
 
 async function handleSignOut() {
     await signOut()
 }
+
 </script>
 
 <template>
@@ -95,7 +104,8 @@ async function handleSignOut() {
                         <div v-if="loggedIn">
                             <li>
                                 <button id="dropdownUser" data-dropdown-toggle="dropdownNavbarUser" data-dropdown-trigger="hover"
-                                    class="flex items-center justify-between w-full py-2 pl-3 pr-4 rounded md:border-0 md:p-0 md:w-auto text-white md:hover:text-gray-400 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent">{{ data?.user?.name }}
+                                    class="flex items-center justify-between w-full py-2 pl-3 pr-4 rounded md:border-0 md:p-0 md:w-auto text-white md:hover:text-gray-400 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent">
+                                    {{ data?.user?.name }}
                                     <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -110,14 +120,11 @@ async function handleSignOut() {
                                             <a href="#" class="block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Profile</a>
                                         </li>
                                         <li>
-                                            <a @click="handleSignOut" to="/login" class=" cursor-pointer block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Sign out</a>
+                                            <a @click="handleSignOut" class="cursor-pointer block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Sign out</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <!-- <NuxtLink  class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
-                                Sign Out
-                            </NuxtLink> -->
                         </div>
                         <div v-else>
                             <NuxtLink to="/login" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">

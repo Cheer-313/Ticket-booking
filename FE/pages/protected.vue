@@ -1,7 +1,10 @@
 <script setup lang="ts">
-definePageMeta({middleware: 'auth'})
+definePageMeta({ middleware: 'auth' })
 
-const { data } = useAuth()
+const { data, status } = useAuth()
+
+status.value;
+data.value
 
 </script>
 

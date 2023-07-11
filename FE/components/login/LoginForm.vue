@@ -11,7 +11,7 @@ definePageMeta({
 
 </script>
 <template>
-    <form class="space-y-4 md:space-y-6" @submit.prevent="$event => signIn('credentials', { redirect: true, email, password })">
+    <form class="space-y-4 md:space-y-6" @submit.prevent="$event => signIn('credentials', { email, password, callbackUrl: '/protected' })">
         <div>
             <label for="email" class="block mb-2 text-sm font-medium text-white">Your
                 email</label>
@@ -44,12 +44,9 @@ definePageMeta({
             class="w-full text-white bg-blue-600 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-blue-700 focus:ring-blue-800">
             Sign in
         </button>
-        <!-- <a href="" type="submit"
-            class="w-full text-white bg-blue-600 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primari hover:bg-blue-700 focus:ring-blue-800">Log
-            in with Google</a> -->
         <p class="text-sm font-light text-gray-400">
-            Don’t have an account yet? <a href="#" class="font-medium hover:underline text-blue-500">Sign
-                up</a>
+            Don’t have an account yet? 
+            <NuxtLink to="/signUp" class="font-medium hover:underline text-blue-500">Sign up</NuxtLink>
         </p>
     </form>
 </template>

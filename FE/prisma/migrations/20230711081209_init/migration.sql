@@ -30,7 +30,8 @@ CREATE TABLE "User" (
     "name" TEXT,
     "email" TEXT,
     "emailVerified" DATETIME,
-    "image" TEXT
+    "image" TEXT,
+    "phone" TEXT
 );
 
 -- CreateTable

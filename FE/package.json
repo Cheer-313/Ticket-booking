@@ -14,11 +14,12 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@sidebase/nuxt-auth": "^0.5.0",
+    "@sidebase/nuxt-session": "^0.2.7",
     "@types/node": "^18",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.5.1",
     "postcss": "^8.4.24",
-    "prisma": "^4.16.1",
+    "prisma": "^4.16.2",
     "tailwindcss": "^3.3.2"
   },
   "dependencies": {
@@ -26,13 +27,17 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@next-auth/prisma-adapter": "^1.0.7",
-    "@prisma/client": "^4.16.1",
+    "@prisma/client": "^4.16.2",
+    "@sidebase/nuxt-parse": "^0.3.0",
+    "@types/bcrypt": "^5.0.0",
     "@vuepic/vue-datepicker": "^5.2.0",
+    "@vueuse/core": "^10.2.1",
     "flowbite": "^1.6.5",
     "flowbite-datepicker": "^1.2.2",
     "next-auth": "^4.22.1",
     "primevue": "^3.29.2",
     "tw-elements": "^1.0.0-beta2",
+    "uuid": "^9.0.0",
     "vee-validate": "^4.9.6",
     "vue-router": "^4.2.2"
   }

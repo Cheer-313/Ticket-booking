@@ -2,10 +2,11 @@
 definePageMeta({
     layout: false,
     auth: {
-        unauthenticatedOnly: true,
-        navigateAuthenticatedTo: '/protected'
+        unauthenticateOnly: true,
+        navigateAuthenticatedTo: '/'
     }
 });
+
 </script>
 
 <template>
