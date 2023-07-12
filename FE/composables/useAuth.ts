@@ -1,3 +1,4 @@
+import { type } from "os"
 import { ISession } from "~/types/ISession"
 import { IUser } from "~/types/IUser"
 
@@ -22,18 +23,44 @@ export async function userLogout() {
     await useRouter().push('/')
 }
 
-export async function registerWithEmail(username: string, email: string, name: string, password: string, phone: string) {
+export async function registerWithEmail(username: any, email: any, name: any, password: any, phone: any): Promise<FormValidation> {
+    // try {
+    //     const res = await $fetch<ISession>('/api/auth/register', {
+    //         method: 'POST',
+    //         body: { username, email, name, password, phone }
+    //     })
+
+    //     if (res) {
+    //         useState('user').value = res
+    //         await useRouter().push('/')
+    //     }
+
+    // } catch (e: any) {
+    //     console.log('error: ' + e.toString())
+    // }
     try {
-        const res = await $fetch<ISession>('/api/auth/register', {
+        const { data, error } = await useFetch<ISession>('/api/auth/register', {
             method: 'POST',
-            body: { username, email, name, password, phone }
+            body: { data: { username, email, name, password, phone } }
         })
 
-        if (res) {
-            useState('user').value = res
-            await useRouter().push('/')
+        if (error.value) {
+            type ErrorData = {
+                data: ErrorData
+            }
+
+            const errorData = error.value as unknown as ErrorData
+            const errors = errorData.data.data as unknown as string
+            const res = JSON.parse(errors)
+            const errorMap = new Map<string, { check: InputValidation; }>(Object.entries(res))
+            
+            return { hasErrors: true, errors: errorMap }
         }
 
+        if (data) {
+            useState('user').value = data
+            await useRouter().push('/')
+        }
     } catch (e: any) {
         console.log('error: ' + e.toString())
     }

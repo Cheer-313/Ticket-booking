@@ -1,9 +1,9 @@
 export interface IUser {
-    id?: number
-    username: string
-    email?: string
-    name?: string
-    password?: string
-    phone?: string
-    loginType?: string
+    id?: any
+    username: any
+    email?: any
+    name?: any
+    password?: any
+    phone?: any
+    loginType?: any
 }
