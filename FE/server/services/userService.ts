@@ -1,5 +1,6 @@
 import { faL } from "@fortawesome/free-solid-svg-icons"
 import { getUserByEmail, getUserByUserName } from "../database/repositories/userRespository"
+import { IUser } from "~/types/IUser"
 
 type ExistsCheck = {
     value: boolean
@@ -30,4 +31,14 @@ export async function doesUserExists(email: string, username: string): Promise<E
         return { value: true, message }
     }
     return { value: false }
+}
+
+export function sanitizeUserForFrontend(user: IUser | undefined): IUser | undefined {
+    if (!user) {
+        return user
+    }
+    delete user.password;
+    delete user.loginType;
+
+    return user 
 }

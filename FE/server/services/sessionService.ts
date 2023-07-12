@@ -2,6 +2,7 @@ import { H3Error, H3Event } from "h3";
 import { createSession, getSessionByAuthToken } from "../database/repositories/sessionRepository";
 import { IUser } from "~/types/IUser";
 import { v4 as uuidv4 } from 'uuid';
+import { sanitizeUserForFrontend } from "./userService";
 
 export async function makeSession(user: IUser, event: H3Event): Promise<IUser> {
     const authToken = uuidv4().replaceAll('-', '')
@@ -17,5 +18,5 @@ export async function makeSession(user: IUser, event: H3Event): Promise<IUser> {
 
 export async function getUserBySessionToken(authToken: string):Promise<IUser> {
     const session = await getSessionByAuthToken(authToken)
-    return session.user
+    return sanitizeUserForFrontend(session.user)
 }
