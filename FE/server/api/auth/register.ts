@@ -3,6 +3,7 @@ import { IUser } from "~/types/IUser";
 // const bcrypt = require('bcrypt')
 import { doesUserExists } from "~/server/services/userService";
 import { createUser } from "~/server/database/repositories/userRespository";
+import { makeSession } from "~/server/services/sessionService";
 
 export default async (event: H3Event) => {
     const body = await readBody(event)
