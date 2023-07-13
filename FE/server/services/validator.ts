@@ -23,8 +23,48 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
         hasError: false
     }
 
+    if (key == 'username') {
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `username required`
+        }
+        check.lenghtMin8 = false
+    }
+
+    if (key == 'email') {
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `email required`
+        }
+        check.lenghtMin8 = false
+    }
+
     if (key == 'password') {
-        if (value.length < 8) {
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `password required`
+        }
+        check.lenghtMin8 = false
+    }
+
+    if (key == 'name') {
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `full name required`
+        }
+        check.lenghtMin8 = false
+    }
+
+    if (key == 'phone') {
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `phone required`
+        }
+        check.lenghtMin8 = false
+    }
+
+    if (key == 'password') {
+        if (value.length > 0 && value.length < 8) {
             check.hasError = true
             check.errorMessage = `password must be at least 8 characters`
         }

@@ -10,6 +10,7 @@ export async function getUserByEmail(email: string): Promise<IUser|null> {
       select: {
         id: true,
         username: true,
+        password: true,
       }
     })
   }

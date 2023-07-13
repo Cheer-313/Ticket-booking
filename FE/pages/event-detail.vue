@@ -6,6 +6,3 @@
         <EventList />
     </div>
 </template>
-
-
-
