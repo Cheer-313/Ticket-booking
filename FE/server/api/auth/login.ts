@@ -9,9 +9,6 @@ export default async (event: H3Event) => {
     const password: string = body.password
     const user = await getUserByEmail(email)
 
-    console.log(password)
-    console.log(user?.password)
-
     if (user === null) {
         sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthenticated' }))
     }

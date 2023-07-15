@@ -17,27 +17,27 @@ export async function useUser(): Promise<IUser> {
     return user.value
 }
 
+export async function userLoggedIn() {
+    const user = await useUser()
+  
+    if (!user) {
+      return false
+    }
+  
+    if (user?.id == null) {
+      return false
+    }
+  
+    return true
+}
+
 export async function userLogout() {
     await useFetch('/api/auth/logout')
     useState('user').value = null
-    await useRouter().push('/')
-}
+    await useRouter().push('/login')
+}    
 
 export async function registerWithEmail(username: any, email: any, name: any, password: any, phone: any): Promise<FormValidation> {
-    // try {
-    //     const res = await $fetch<ISession>('/api/auth/register', {
-    //         method: 'POST',
-    //         body: { username, email, name, password, phone }
-    //     })
-
-    //     if (res) {
-    //         useState('user').value = res
-    //         await useRouter().push('/')
-    //     }
-
-    // } catch (e: any) {
-    //     console.log('error: ' + e.toString())
-    // }
     try {
         const { data, error } = await useFetch<ISession>('/api/auth/register', {
             method: 'POST',

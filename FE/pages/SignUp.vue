@@ -18,7 +18,6 @@ definePageMeta({
     layout: false
 })
 
-
 </script>
 
 <template>

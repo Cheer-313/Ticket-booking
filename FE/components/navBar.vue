@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { userLogout } from '~/composables/useAuth';
+import { userLogout, userLoggedIn } from '~/composables/useAuth';
 import { IUser } from '~/types/IUser';
 
 const user = useState<IUser>('user')
 const logout = userLogout
-
+const initalCheck = await userLoggedIn()
+const isLoggedIn = ref(initalCheck)
 // const { data, status, signOut } = useAuth()
 // const loggedIn = computed(() => status.value === 'authenticated')
 
@@ -99,7 +100,7 @@ const logout = userLogout
                             Ticket</a>
                     </li>
                     <li>
-                        <!-- <div>
+                        <div v-if="isLoggedIn">
                             <li>
                                 <button id="dropdownUser" data-dropdown-toggle="dropdownNavbarUser" data-dropdown-trigger="hover"
                                     class="flex items-center justify-between w-full py-2 pl-3 pr-4 rounded md:border-0 md:p-0 md:w-auto text-white md:hover:text-gray-400 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent">
@@ -122,8 +123,8 @@ const logout = userLogout
                                     </ul>
                                 </div>
                             </li>
-                        </div> -->
-                        <div class="">
+                        </div>
+                        <div v-if="!isLoggedIn" class="">
                             <NuxtLink to="/login" class="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0 text-white md:hover:text-gray-400 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">
                                 Sign In
                             </NuxtLink>   

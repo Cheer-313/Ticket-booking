@@ -27,7 +27,6 @@ export default NuxtAuthHandler({
     adapter: PrismaAdapter(prisma),
     callbacks: {
         jwt: async({ token, user, account, profile }) => {
-            console.log(token, user, account, profile )
             const isSignIn = user ? true: false
             if (isSignIn) {
                 // const me = users.find(u => u.email === user.email)
