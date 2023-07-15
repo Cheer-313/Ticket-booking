@@ -6,7 +6,6 @@ const config = useRuntimeConfig()
 const { data:list, error } = await useFetch(config.public.MS1_API_URL+"/api/list/", {
     method: 'GET',
 });
-console.log(list.value, error.value);
 </script>
 
 <template>
