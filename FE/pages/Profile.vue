@@ -10,7 +10,7 @@ import UserInfo from '~/components/Profile/UserInfo.vue';
          <div class="p-4 border-2 min-h-screen border-dashed rounded-lg border-gray-300">
             <div id="myTabContent">
                <UserInfo />
-               <LazyProfileOrderHistory />
+               <ProfileOrderHistory />
             </div>
          </div>
       </div>

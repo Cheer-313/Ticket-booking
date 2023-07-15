@@ -53,25 +53,5 @@ export default NuxtAuthHandler({
                 }
             }
         }),
-        // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
-        // Credentials.default ({
-        //     id: 'credentials',
-        //     name: 'Credentials',
-        //     credentials: {
-        //         email: { label: "email", type: "email", placeholder: "name@company.com" },
-        //         password: { label: "password", type: "password" }
-        //     },
-        //     authorize(credentials: any) {
-        //         const user = {
-        //             email: 'test@gmail.com',
-        //             password: 'password'
-        //         }
-        //         if (credentials?.email === user.email && credentials?.password === user.password) {
-        //             return user
-        //         }
-        //         else return null
-        //     }
-        // })
-
     ],
 })

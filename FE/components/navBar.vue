@@ -115,7 +115,7 @@ const isLoggedIn = ref(initalCheck)
                                     class="z-10 hidden font-normal divide-y rounded-lg shadow md:w-44 bg-gray-800 divide-gray-600 w-full">
                                     <ul class="py-2 text-sm text-gray-400 " aria-labelledby="dropdownLargeButton">
                                         <li>
-                                            <a href="#" class="block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Profile</a>
+                                            <NuxtLink to="/Profile" class="block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Profile</NuxtLink>
                                         </li>
                                         <li>
                                             <a @click="logout" class="cursor-pointer block px-10 md:px-4 py-2 hover:bg-gray-600 hover:text-white">Sign out</a>
