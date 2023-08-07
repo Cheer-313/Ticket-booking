@@ -6,7 +6,7 @@
         </svg>
     </button>
     <aside id="default-sidebar" class="absolute top-16 left-0 z-40 w-64 pl-4 pt-4  transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-800 rounded-lg border-2 border-dashed border-gray-300">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-800 rounded-lg border-2 border-gray-300">
             <ul class="space-y-2 -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                 <li role="presentation">
                     <div href="#" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700">
