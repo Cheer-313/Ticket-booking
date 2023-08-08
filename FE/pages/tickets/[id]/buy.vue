@@ -1,5 +1,5 @@
 <script setup>
-definePageMeta({middleware: 'auth'})
+// definePageMeta({middleware: 'auth'})
 const route = useRoute();
 const router = useRouter();
 const config = useRuntimeConfig();
@@ -48,7 +48,12 @@ function submitBuyTicketForm() {
 <template>
     <div class="min-h-screen bg-gray-800 buy-ticket">
         <EventInfo :event="eventDetail[0]"/>
-        <BuyTicketForm :ticket-slot="ticketSlot" @submit-form="submitBuyTicketForm"/>
+        <div v-if="eventDetail[0]['work_space_key'] != null && eventDetail[0]['event_key_chart'] != null">
+            <SeatChart></SeatChart>
+        </div>
+        <div v-else>
+            <BuyTicketForm :ticket-slot="ticketSlot" @submit-form="submitBuyTicketForm"/>
+        </div>
     </div>
 </template>
 
