@@ -93,19 +93,12 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
         $result = [];
         try {
             $select = [
-                't_events.id',
-                't_events.venue_id',
-                't_events.genre_id',
-                't_events.event_name',
-                't_events.event_date',
-                't_events.start_time',
-                't_events.end_time',
-                't_events.event_img',
-                't_events.event_description',
+                't_events.*',
                 'm_venues.venue_name',
                 'm_venues.address',
                 'm_venues.post_code',
                 'm_venues.venue_img',
+                'm_venues.work_space_key',
             ];
             $query = $this->model->select($select)
                     ->leftJoin('m_venues', function ($join) {
