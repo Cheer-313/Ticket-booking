@@ -23,7 +23,11 @@ class TicketController extends Controller
     }
 
     public function bookingSlot (Request $request) {
-        $response = $this->ticketService->insertBookingTicket($request);
+        if ($request['submit_type'] == 2) {
+                $response = $this->ticketService->insertBookingTicketByChart($request);
+        } else {
+            $response = $this->ticketService->insertBookingTicket($request);
+        }
         return response()->json($response, 200);
     }
 }
