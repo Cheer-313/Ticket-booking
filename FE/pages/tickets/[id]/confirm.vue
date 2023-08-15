@@ -50,7 +50,7 @@ const bookingTicket = async () => {
 }
 </script>
 <template>
-    <div class="min-h-screen bg-gray-800">
+    <div class="min-h-screen bg-gray-800 confirm-page">
         <EventInfo :event="eventDetail[0]"/>
         <div id="alert-2" :class="!showError ? 'hidden' : ''" class="flex items-center p-4 mt-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 flex-column" role="alert">
             <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -73,7 +73,7 @@ const bookingTicket = async () => {
 </template>
 
 <style>
-    button.bg-red-600, section.bg-gray-900 {
+    button.bg-red-600, .confirm-page.bg-gray-900 {
         display: none;
     }
 </style>

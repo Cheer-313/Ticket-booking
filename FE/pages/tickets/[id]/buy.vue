@@ -35,13 +35,25 @@ if (process.client && localStorage.getItem('booked-ticket')) {
     localStorage.removeItem("booked-ticket");
 }
 
-function submitBuyTicketForm() {
-    router.push({
-        name: 'tickets-id-confirm',
-        params: {
-            id: event.value.event_id,
-        }
-    })
+function submitBuyTicketForm(isRenderChart = false, paymentId = null) {
+    if (isRenderChart) {
+        router.push({
+            name: 'tickets-id-complete',
+            params: {
+                id: event.value.event_id,
+            },
+            query: {
+                'payment_id': paymentId,
+            }
+        })
+    } else {
+        router.push({
+            name: 'tickets-id-confirm',
+            params: {
+                id: event.value.event_id,
+            }
+        })
+    }
 }
 </script>
 
@@ -49,7 +61,7 @@ function submitBuyTicketForm() {
     <div class="min-h-screen bg-gray-800 buy-ticket">
         <EventInfo :event="eventDetail[0]"/>
         <div v-if="eventDetail[0]['work_space_key'] != null && eventDetail[0]['event_key_chart'] != null">
-            <SeatChart></SeatChart>
+            <SeatChart @submit-form="submitBuyTicketForm" :ticket-slot="ticketSlot"></SeatChart>
         </div>
         <div v-else>
             <BuyTicketForm :ticket-slot="ticketSlot" @submit-form="submitBuyTicketForm"/>
