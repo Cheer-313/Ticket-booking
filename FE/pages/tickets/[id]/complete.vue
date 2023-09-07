@@ -17,7 +17,7 @@ eventDetail.value = event.value.event_detail;
 paymentId.value = route.query?.payment_id;
 </script>
 <template>
-    <div class="min-h-screen bg-gray-800">
+    <div class="min-h-screen bg-gray-800 complete-page">
         <EventInfo :event="eventDetail[0]"/>
         <div class="font-light sm:text-lg text-white mt-16">
             <div class="px-4 mx-auto max-w-screen-md border-b pb-4">
@@ -35,3 +35,9 @@ paymentId.value = route.query?.payment_id;
         </div>
     </div>
 </template>
+
+<style>
+    .complete-page button.bg-red-600 {
+        display: none;
+    }
+</style>

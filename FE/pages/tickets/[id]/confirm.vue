@@ -6,6 +6,8 @@ const eventId = ref();
 const eventDetail = ref([]);
 const showError = ref(false);
 const errMsg = ref([]);
+const user = useState('user')
+
 eventId.value = route.params.id;
 // Get data artist
 const { data:event, error } = await useFetch(config.public.MS1_API_URL+"/api/detail/event/", {
@@ -17,11 +19,10 @@ const { data:event, error } = await useFetch(config.public.MS1_API_URL+"/api/det
 eventDetail.value = event.value.event_detail;
 
 const bookingTicket = async () => {
-    let {data:dataUser} = useAuth();
     let body = {
-        userId: 1, // Todo: Get id user from sesion
-        email: dataUser.value.user.email,
-        name: dataUser.value.user.name,
+        userId: user.value.id, // Todo: Get id user from sesion
+        email: user.value.email,
+        name: user.value.name,
         ticket: JSON.parse(localStorage.getItem('booked-ticket')),
     }
     
@@ -73,7 +74,7 @@ const bookingTicket = async () => {
 </template>
 
 <style>
-    button.bg-red-600, .confirm-page.bg-gray-900 {
+    .confirm-page button.bg-red-600 {
         display: none;
     }
 </style>

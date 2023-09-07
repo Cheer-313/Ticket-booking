@@ -1,16 +1,26 @@
 <script setup>
+import { userLogout, userLoggedIn } from '~/composables/useAuth';
+
 const props = defineProps(['event']);
 const { event } = toRefs(props);
 const dayjs = useDayjs();
 const router = useRouter();
 
+const initalCheck = await userLoggedIn()
+const isLoggedIn = ref(initalCheck)
 const onClickBuyTicket = () => {
-    router.push({
-        name: 'tickets-id-buy',
-        params: {
-            id: event.value.event_id,
-        }
-    })
+    if (isLoggedIn.value) {
+        router.push({
+            name: 'tickets-id-buy',
+            params: {
+                id: event.value.event_id,
+            }
+        })
+    } else {
+        router.push({
+            name: 'login'
+        })
+    }
 }
 </script>
 <template>
@@ -40,9 +50,16 @@ const onClickBuyTicket = () => {
                     </div>
                 </div>
                 <div class="col-span-12 rounded-lg p-4 mx-auto sm:col-span-4 ">
-                    <button @click="onClickBuyTicket" type="button" class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2">
-                        BUY TICKET
-                    </button>
+                    <div v-if="isLoggedIn">
+                        <button @click="onClickBuyTicket" type="button" class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2">
+                            BUY TICKET
+                        </button>
+                    </div>
+                    <div v-else>
+                        <button @click="onClickBuyTicket" type="button" class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2">
+                            SIGN IN TO BUY
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>

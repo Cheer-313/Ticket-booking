@@ -1,8 +1,11 @@
-<script setup>
+<script setup >
+import { useUser } from '~/composables/useAuth';
+
 const { data } = useAuth()
 const props = defineProps(['eventId']);
 const ticketSlot = ref([]);
 const emit = defineEmits(['submitForm'])
+const user = await useUser();
 
 if (process.client) {
     ticketSlot.value = JSON.parse(localStorage.getItem('booked-ticket'));
@@ -23,11 +26,11 @@ const bookingTicket = () => {
                         <div class="space-y-8">
                             <div>
                                 <h5 class="block mb-2 text-sm font-medium text-gray-300">Full Name</h5>
-                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">{{ data?.user?.name }}</p>
+                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">{{ user.name }}</p>
                             </div>
                             <div>
                                 <h5 class="block mb-2 text-sm font-medium text-gray-300">Email</h5>
-                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">{{ data?.user?.email }}</p>
+                                <p class="border ext-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white shadow-sm-light">{{ user.email }}</p>
                             </div>
                         </div>
                     </div>

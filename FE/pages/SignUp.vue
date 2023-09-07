@@ -42,7 +42,7 @@ definePageMeta({
                     <form class="space-y-4 md:space-y-6" action="#" method="POST">
                         <div>
                             <label for="username" class="block mb-2 text-sm font-medium text-white">Your Username</label>
-                            <input :class="errors.has('username') ? 'border-red-500' : '' " v-model="username" type="text" name="username" id="username" class=" border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="bla bla bla" required>
+                            <input :class="errors.has('username') ? 'border-red-500' : '' " v-model="username" type="text" name="username" id="username" class=" border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Your username" required>
                         </div>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
@@ -58,7 +58,7 @@ definePageMeta({
                         </div>
                         <div>
                             <label for="phone" class="block mb-2 text-sm font-medium text-white">Your phone number</label>
-                            <input :class="errors.has('phone') ? 'border-red-500' : '' " v-model="phone" type="text" name="phone" id="phone" class=" border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="xxxxxxxxxx" required>
+                            <input :class="errors.has('phone') ? 'border-red-500' : '' " v-model="phone" type="text" name="phone" id="phone" class=" border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="0123456789" required>
                         </div>
                         <button @click.prevent="postRegisterForm" class="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Create an account</button>
                         <p class="text-sm font-light text-gray-400">

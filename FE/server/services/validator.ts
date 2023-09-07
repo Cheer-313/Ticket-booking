@@ -29,7 +29,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
     if (key == 'username') {
         if (value.length < 1) {
             check.hasError = true
-            check.errorMessage = `username required`
+            check.errorMessage = `Your username is required`
         }
         check.lenghtMin8 = false
     }
@@ -37,7 +37,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
     if (key == 'email') {
         if (value.length < 1) {
             check.hasError = true
-            check.errorMessage = `email required`
+            check.errorMessage = `Your email is required`
         }
         check.lenghtMin8 = false
     }
@@ -47,7 +47,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
             check.hasError = false
         } else {
             check.hasError = true
-            check.errorMessage = `invalid email format. Example: company@example.com`
+            check.errorMessage = `Invalid email format.`
         }
         check.lenghtMin8 = false
     }
@@ -55,7 +55,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
     if (key == 'password') {
         if (value.length < 1) {
             check.hasError = true
-            check.errorMessage = `password required`
+            check.errorMessage = `Your password is required`
         }
         check.lenghtMin8 = false
     }
@@ -63,7 +63,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
     if (key == 'name') {
         if (value.length < 1) {
             check.hasError = true
-            check.errorMessage = `full name required`
+            check.errorMessage = `Your full name is required`
         }
         check.lenghtMin8 = false
     }
@@ -71,7 +71,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
     if (key == 'phone') {
         if (value.length < 1) {
             check.hasError = true
-            check.errorMessage = `phone required`
+            check.errorMessage = `Your phone is required`
         }
         check.lenghtMin8 = false
     }
@@ -81,7 +81,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
             check.hasError = false
         } else {
             check.hasError = true
-            check.errorMessage = `invalid phone format`
+            check.errorMessage = `Invalid phone format`
         }
         check.lenghtMin8 = false
     }
@@ -89,7 +89,7 @@ async function runChecks(key: string, value: string): Promise<InputValidation> {
     if (key == 'password') {
         if (value.length > 0 && value.length < 8) {
             check.hasError = true
-            check.errorMessage = `password must be at least 8 characters`
+            check.errorMessage = `Password must be at least 8 characters`
         }
         check.lenghtMin8 = false
     }
